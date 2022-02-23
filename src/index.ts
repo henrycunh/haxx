@@ -12,7 +12,7 @@ import { template } from './template'
 export const argv = minimist(process.argv.slice(2))
 export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
-export function $(tokens: string[], ...args: any[]) {
+export function $(tokens, ...args) {
     const { verbose, shell, prefix, quote } = $
 
     const __from = (new Error('-').stack.split(/^\s*at\s/m)[2]).trim()
@@ -20,9 +20,9 @@ export function $(tokens: string[], ...args: any[]) {
     let command = tokens[0]
     args.forEach((arg, index) => {
         const parsedArgument = Array.isArray(arg)
-            ? arg.map(_arg => quote(pruneNewlines(_arg)))
+            ? arg.map(_arg => quote(pruneNewlines(_arg))).join(' ')
             : quote(pruneNewlines(arg))
-        command += parsedArgument + tokens[index]
+        command += parsedArgument + tokens[index + 1]
     })
 
     let resolve, reject
@@ -67,6 +67,7 @@ export function $(tokens: string[], ...args: any[]) {
     }
 
     setTimeout(promise._run, 0) // Make sure all subprocesses started.
+    promise.command = command
     return promise
 }
 
@@ -118,7 +119,7 @@ function quote(arg) {
         .replace(/\t/g, '\\t')
         .replace(/\v/g, '\\v')
         .replace(/\0/g, '\\0')
-    return `$'${argScaped}'`
+    return `'${argScaped}'`
 }
 
 function printCommand(command: string) {
