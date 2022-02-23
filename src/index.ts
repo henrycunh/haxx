@@ -140,4 +140,4 @@ function colorize(command: string) {
         return kleur.green().bold(str)
     })
 }
-export { io, write, read, exists, remove, template }
+export { io, write, read, exists, remove, template, kleur }
