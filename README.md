@@ -11,7 +11,7 @@
     <tbody>
       <td align="center">
         <img width="2000" height="0"><br>
-        <a href="#initializing">initializing</a> • <a href="#commands">commands</a> • <a href="#using-in-your-project">using in your project</a><br>
+        <a href="#getting-started">getting started</a> • <a href="#installation">commands</a> • <a href="#api">api</a><br>
         <img width="2000" height="0">
       </td>
     </tbody>
