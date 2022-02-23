@@ -12,6 +12,7 @@ export class ProcessPromise<T = Function> extends Promise<T> {
     _prerun: Function
     _run: Function
     _postrun: Function
+    command: string
 
     get stdin() {
         this._inheritStdin = false

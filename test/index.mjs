@@ -19,4 +19,4 @@ console.log(await read.yaml('test-file.yaml'))
 await $`rm test-file.yaml`
 
 section('templating')
-console.log(template({ test: 20 })`test value is {{ test }}`)
+console.log(template({ test: 20 }, 'test value is {{ test }}'))
