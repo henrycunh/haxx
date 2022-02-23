@@ -1,7 +1,6 @@
-import { $, argv, chalk } from 'zx'
-import { io, read } from 'fsxx'
+import { $, argv, io, kleur, read } from '../dist/index.mjs'
 
-$.verbose = false
+// $.verbose = false
 io.json.spaces = 4
 
 const lastTag = `${await $`git tag | sort -V | tail -n 1`}`.trim()
@@ -27,9 +26,9 @@ const nextVersion = ({
     },
 })[type](lastTag)
 
-console.log(`${chalk.green(type)} release version ${chalk.green(nextVersion)}`)
+console.log(`${kleur.green(type)} release version ${kleur.green(nextVersion)}`)
 
-console.log(`changing version in package.json to ${chalk.green(nextVersion)}`)
+console.log(`changing version in package.json to ${kleur.green(nextVersion)}`)
 const { data: pkg, save } = await io.json`package.json`
 pkg.version = nextVersion
 await save()
@@ -39,7 +38,7 @@ const commitMessage = `chore(release): ${nextVersion}`
 await $`git add package.json`
 await $`git commit -m ${commitMessage}`
 
-console.log(`creating tag ${chalk.green(nextVersion)}`)
+console.log(`creating tag ${kleur.green(nextVersion)}`)
 await $`git tag ${nextVersion}`
 
 console.log('generating changelog...')
@@ -50,16 +49,17 @@ await $`git commit --amend -m ${commitMessage}`
 // get last tag changes from changelog
 const changelog = await read`CHANGELOG.md`
 const nextVersionChanges = changelog
-    .split('##')
+    .split(/## \[/)
     .map((section) => {
         const content = section.split('\n').slice(1).join('\n').trim()
-        const title = section.split('\n')[0].trim()
+        const titleMatch = section.split('\n')[0].match(/([^\]]+)/)
+        const title = titleMatch ? titleMatch[1] : ''
         return { title, content }
     })
     .filter(({ content }) => content.length)
     .find(({ title }) => title.includes(nextVersion))
 
-console.log(`annotating tag ${chalk.green(nextVersion)}`)
+console.log(`annotating tag ${kleur.green(nextVersion)}`)
 await $`git tag -d ${nextVersion}`
 await $`git tag ${nextVersion} -m ${nextVersionChanges.content}`
 
@@ -68,4 +68,4 @@ await $`git push origin main`
 
 await $`nr build`
 await $`npm publish --access public`
-console.log(`${chalk.green(nextVersion)} release complete`)
+console.log(`${kleur.green(nextVersion)} release complete`)
