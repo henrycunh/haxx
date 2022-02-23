@@ -34,7 +34,7 @@ const { data: pkg, save } = await io.json`package.json`
 pkg.version = nextVersion
 await save()
 
-const commitMessage = `chore: release ${nextVersion}`
+const commitMessage = `chore(release): ${nextVersion}`
 
 await $`git add package.json`
 await $`git commit -m ${commitMessage}`
