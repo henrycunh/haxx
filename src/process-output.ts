@@ -17,7 +17,7 @@ export class ProcessOutput extends Error {
     }
 
     toString() {
-        return this.#combined
+        return this.#combined.trim()
     }
 
     get stdout() {
