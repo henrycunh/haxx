@@ -3,10 +3,6 @@
 # haxx
   <sup>easily create and run scripts using javascript</sup>
 
-```js
-exists(haxx) ? await $`mkdir haxx` : await $`ls haxx`
-```
-
 </div>
 
 
