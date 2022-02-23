@@ -6,6 +6,9 @@ import { ProcessPromise } from './process-promise'
 import { ProcessOutput } from './process-output'
 import { exitCodeInfo } from './utils/exit-code'
 
+import { exists, io, read, remove, write } from './io'
+import { template } from './template'
+
 export const argv = minimist(process.argv.slice(2))
 export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -136,3 +139,4 @@ function colorize(command: string) {
         return kleur.green().bold(str)
     })
 }
+export { io, write, read, exists, remove, template }
