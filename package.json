@@ -1,16 +1,17 @@
 {
   "name": "haxx",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "a very opinionated runtime for scripts, it simply works",
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
   "type": "module",
   "files": [
     "dist/index.mjs",
-    "dist/*.d.ts"
+    "dist/*.d.ts",
+    "dist/chunks"
   ],
   "bin": {
-    "do": "./dist/do.mjs"
+    "haxx": "./dist/haxx.mjs"
   },
   "exports": {
     ".": {
@@ -49,6 +50,7 @@
     "axios": "^0.26.0",
     "fs-extra": "^10.0.1",
     "globby": "^13.1.1",
+    "haxx": "^0.0.4",
     "kleur": "^4.1.4",
     "minimist": "^1.2.5",
     "mustache": "^4.2.0",
