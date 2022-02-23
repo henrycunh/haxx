@@ -152,6 +152,15 @@ const phrase = template({ name: 'world'}, 'Hello {{ name }}')
 
 const filled = template.file({ GITHUB_TOKEN: '...' }, 'my-template')
 ```
+
+### Included batteries
+
+- `kleur` - a nice color library
+- `glob` - utility for globbing files
+- `yaml` - a yaml parser
+- `os` - the os package
+- `path` - the path package
+- `minimist` - your arguments parsed, availabe through the global constant `argv`
 ## Acknowledgements
 This project is **heavily** inspired by [**zx**]() and [**fsxx**](), down to the code. 
 
