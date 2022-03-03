@@ -152,6 +152,7 @@ const filled = template.file({ GITHUB_TOKEN: '...' }, 'my-template')
 ### Included batteries
 
 - `kleur` - a nice color library
+- `kleur-template` - easier coloring through templating
 - `glob` - utility for globbing files
 - `yaml` - a yaml parser
 - `os` - the os package

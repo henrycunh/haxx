@@ -8,7 +8,9 @@ specifiers:
   esmo: ^0.14.1
   fs-extra: ^10.0.1
   globby: ^13.1.1
+  haxx: ^0.0.4
   kleur: ^4.1.4
+  kleur-template: ^0.0.1
   minimist: ^1.2.5
   mustache: ^4.2.0
   ps-tree: ^1.2.0
@@ -22,7 +24,9 @@ dependencies:
   axios: 0.26.0
   fs-extra: 10.0.1
   globby: 13.1.1
+  haxx: 0.0.4
   kleur: 4.1.4
+  kleur-template: 0.0.1
   minimist: 1.2.5
   mustache: 4.2.0
   ps-tree: 1.2.0
@@ -1786,6 +1790,24 @@ packages:
       function-bind: 1.1.1
     dev: true
 
+  /haxx/0.0.4:
+    resolution: {integrity: sha512-BipamqDqWCHZ1PF4OKhaYpSZJNRhV3TFmALQ5dnd0lJWY1mwxQIVLuRjeh+YePr0tdUXD20GiE9DDr+wgdgFEQ==}
+    engines: {node: '>= 14.8.0'}
+    hasBin: true
+    dependencies:
+      axios: 0.26.0
+      fs-extra: 10.0.1
+      globby: 13.1.1
+      kleur: 4.1.4
+      minimist: 1.2.5
+      mustache: 4.2.0
+      ps-tree: 1.2.0
+      which: 2.0.2
+      yaml: 1.10.2
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
   /hookable/5.1.1:
     resolution: {integrity: sha512-7qam9XBFb+DijNBthaL1k/7lHU2TEMZkWSyuqmU3sCQze1wFm5w9AlEx30PD7a+QVAjOy6Ec2goFwe1YVyk2uA==}
     dev: true
@@ -2038,6 +2060,13 @@ packages:
       array-includes: 3.1.4
       object.assign: 4.1.2
     dev: true
+
+  /kleur-template/0.0.1:
+    resolution: {integrity: sha512-UjKfvNttId9ntluUQdJhEzbf0VzPVfZD20GTYjPr1+BqM7A6I3GthaC+BPjke5msD7aFyUH8Kfti5CaDF+DS8A==}
+    engines: {node: '>= 14.8.0'}
+    dependencies:
+      kleur: 4.1.4
+    dev: false
 
   /kleur/4.1.4:
     resolution: {integrity: sha512-8QADVssbrFjivHWQU7KkMgptGTl6WAcSdlbBPY4uNF+mWr6DGcKrvY2w4FQJoXch7+fKMjj0dRrL75vk3k23OA==}

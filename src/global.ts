@@ -5,6 +5,7 @@ import axios from 'axios'
 import fs from 'fs-extra'
 import YAML from 'yaml'
 import * as glob from 'globby'
+import { style } from 'kleur-template'
 import { io, read, write } from './io'
 import { template } from './template'
 import {
@@ -33,5 +34,6 @@ export function registerGlobals() {
         read,
         write,
         template,
+        style
     })
 }
