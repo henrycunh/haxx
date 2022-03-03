@@ -1,3 +1,17 @@
+# [0.1.0](https://github.com/henrycunh/isw/compare/0.0.6...0.1.0) (2022-03-03)
+
+
+### Bug Fixes
+
+* remove pnpm global dir ([71c68a0](https://github.com/henrycunh/isw/commit/71c68a048443f736fbc893e0945a512008bb753b))
+
+
+### Features
+
+* add kleur-template ([f5804f7](https://github.com/henrycunh/isw/commit/f5804f792e3cd1646da6f854eda2f2bdf44ad60c))
+
+
+
 ## [0.0.6](https://github.com/henrycunh/isw/compare/0.0.5...0.0.6) (2022-02-23)
 
 
