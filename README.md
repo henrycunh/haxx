@@ -159,7 +159,7 @@ const filled = template.file({ GITHUB_TOKEN: '...' }, 'my-template')
 - `path` - the path package
 - `minimist` - your arguments parsed, availabe through the global constant `argv`
 ## Acknowledgements
-This project is **heavily** inspired by [**zx**]() and [**fsxx**](), down to the code. 
+This project is **heavily** inspired by [**zx**](https://github.com/google/zx) and [**fsxx**](https://github.com/antfu/fsxx), down to the code. 
 
 Check them out!
 
