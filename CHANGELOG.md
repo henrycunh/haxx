@@ -1,3 +1,17 @@
+# [0.2.0](https://github.com/henrycunh/isw/compare/0.1.0...0.2.0) (2022-05-30)
+
+
+### Bug Fixes
+
+* add convetional-changelog as dev dep ([1f1e966](https://github.com/henrycunh/isw/commit/1f1e966e37e309b234c41d7dce37c47c6cc57135))
+
+
+### Features
+
+* add ohmyfetch package ([e565ea6](https://github.com/henrycunh/isw/commit/e565ea67d6e014f21da45c88c9806f6acc57e016))
+
+
+
 # [0.1.0](https://github.com/henrycunh/isw/compare/0.0.6...0.1.0) (2022-03-03)
 
 
