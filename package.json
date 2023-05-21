@@ -1,6 +1,6 @@
 {
   "name": "haxx",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "a very opinionated runtime for scripts, it simply works",
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
@@ -16,7 +16,10 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
     },
-    "./globals": "./dist/globals.mjs"
+    "./globals": {
+      "types": "./dist/globals.d.ts",
+      "import": "./dist/globals.mjs"
+    }
   },
   "types": "./dist/index.d.ts",
   "typesVersions": {
