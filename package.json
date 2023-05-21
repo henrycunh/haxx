@@ -1,6 +1,6 @@
 {
   "name": "haxx",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "a very opinionated runtime for scripts, it simply works",
   "packageManager": "pnpm@8.1.1",
   "main": "dist/index.mjs",
