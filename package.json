@@ -37,7 +37,7 @@
   "scripts": {
     "test": "vitest -u",
     "prepublish": "nr build",
-    "build": "unbuild"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

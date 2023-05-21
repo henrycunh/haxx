@@ -9,10 +9,8 @@ declare global {
     const kleur: typeof _.kleur
     const fs: typeof _.fs
     const glob: typeof _.glob
-    const nothrow: typeof _.nothrow
     const os: typeof _.os
     const path: typeof _.path
-    const sleep: typeof _.sleep
     const YAML: typeof _.YAML
     const io: typeof _.io
     const read: typeof _.read

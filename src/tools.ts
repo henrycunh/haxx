@@ -1,3 +1,5 @@
+import minimist from 'minimist'
+
 export { default as os } from 'os'
 export { default as path } from 'path'
 export { default as kleur } from 'kleur'
@@ -7,5 +9,6 @@ export { resguard } from 'resguard'
 
 export * as glob from 'globby'
 export { style } from 'kleur-template'
-export { io, read, write } from './io'
-export { template } from './template'
+export { template } from './template.js'
+
+export const argv = minimist(process.argv.slice(2))

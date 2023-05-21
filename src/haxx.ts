@@ -4,8 +4,7 @@ import path from 'path'
 import { tmpdir } from 'os'
 import url from 'url'
 import fs from 'fs-extra'
-import { ProcessOutput } from './process-output'
-import { $ } from './index'
+import { $, ProcessOutput } from './index.js'
 
 const { log } = console
 
@@ -35,11 +34,13 @@ async function cli() {
         await scriptFromHttp(firstArg)
     }
 
-    const filepath = firstArg.startsWith('file:///')
-        ? url.fileURLToPath(firstArg)
-        : path.resolve(firstArg)
+    if (firstArg) {
+        const filepath = firstArg.startsWith('file:///')
+            ? url.fileURLToPath(firstArg)
+            : path.resolve(firstArg)
 
-    await importPath(filepath)
+        await importPath(filepath)
+    }
 }
 
 try {
@@ -93,14 +94,14 @@ async function scriptFromHttp(remote: string) {
     await writeAndImport(script, filepath, path.join(process.cwd(), path.basename(filename)))
 }
 
-async function writeAndImport(script, filepath, origin = filepath) {
+async function writeAndImport(script: string | Buffer, filepath: string, origin = filepath) {
     await fs.writeFile(filepath, script)
     const wait = importPath(filepath, origin)
     await fs.rm(filepath)
     await wait
 }
 
-async function importPath(filepath, origin = filepath) {
+async function importPath(filepath: string, origin = filepath) {
     const ext = path.extname(filepath)
 
     if (ext === '') {

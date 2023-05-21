@@ -1,16 +1,19 @@
 {
     "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "allowSyntheticDefaultImports": true
+        "target": "ES2021",
+        "lib": ["ES2021", "DOM"],
+        "moduleResolution": "NodeNext",
+        "module": "NodeNext",
+        "strict": true,
+        "outDir": "./dist",
+        "declaration": true
     },
     "exclude": [
         "node_modules",
-        "**/*.test.ts"
+        "**/*.test.ts",
+        "./src/globals.ts"
     ],
     "include": [
-        "src"
+        "./src/**/*"
     ]
 }

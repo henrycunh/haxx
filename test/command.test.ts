@@ -3,11 +3,11 @@ import { $ } from '../src/index'
 
 describe('Process parsing feature', async() => {
     it('should properly parse a process', async() => {
-        const process = $`echo hello world`
-        expect(process.command)
-            .toMatchInlineSnapshot('"echo hello world"')
-        expect($`echo ${await process}`.command)
-            .toMatchInlineSnapshot('"echo \'hello world\'"')
+        const { data } = await $`echo hello world`
+        expect(data)
+            .toMatchInlineSnapshot('"hello world"')
+        expect($`echo ${data}`._command)
+            .toMatchInlineSnapshot('"echo $\'hello world\'"')
     })
 
     it('should be readable as string', async() => {

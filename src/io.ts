@@ -1,6 +1,6 @@
 import fs from 'fs-extra'
 import yaml from 'yaml'
-import { interpretPath } from './utils/path'
+import { interpretPath } from './utils.js'
 
 interface IOObject<T> {
     data: any
@@ -12,7 +12,7 @@ async function createObject<T>(
     read: () => Promise<T>,
     write: (data: T) => Promise<void>,
 ): Promise<IOObject<T>> {
-    const obj = {
+    const obj: IOObject<T> = {
         data: await read(),
         write: async(data = obj.data) => {
             return await write(data)
@@ -26,9 +26,9 @@ async function createObject<T>(
 }
 
 async function createSyncObject(read: Function, write: Function) {
-    const obj = {
+    const obj: IOObject<any> = {
         data: read(),
-        save: (data = obj.data) => {
+        write: (data = obj.data) => {
             return write(data)
         },
         read: () => {
