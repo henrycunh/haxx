@@ -1,25 +1,23 @@
-import * as tools from './tools'
-import * as core from './core'
+import * as _ from './index.js'
 
-Object.assign(global, tools)
-Object.assign(global, core)
+Object.assign(global, _)
 
 declare global {
-    const $: typeof core.$
-    const argv: typeof core.argv
-    const cd: typeof core.cd
-    const kleur: typeof tools.kleur
-    const fs: typeof tools.fs
-    const glob: typeof tools.glob
-    const nothrow: typeof core.nothrow
-    const os: typeof tools.os
-    const path: typeof tools.path
-    const sleep: typeof core.sleep
-    const YAML: typeof tools.YAML
-    const io: typeof tools.io
-    const read: typeof tools.read
-    const write: typeof tools.write
-    const template: typeof tools.template
-    const style: typeof tools.style
-    const resguard: typeof tools.resguard
+    const $: typeof _.$
+    const argv: typeof _.argv
+    const cd: typeof _.cd
+    const kleur: typeof _.kleur
+    const fs: typeof _.fs
+    const glob: typeof _.glob
+    const nothrow: typeof _.nothrow
+    const os: typeof _.os
+    const path: typeof _.path
+    const sleep: typeof _.sleep
+    const YAML: typeof _.YAML
+    const io: typeof _.io
+    const read: typeof _.read
+    const write: typeof _.write
+    const template: typeof _.template
+    const style: typeof _.style
+    const resguard: typeof _.resguard
 }
