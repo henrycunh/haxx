@@ -1,4 +1,5 @@
-/* eslint-disable no-undef */
+import { $, io, kleur, read, template, write } from '../src/index'
+
 const section = what => console.log(`\nTesting ${kleur.bold().green(what)}`)
 
 section('file creation')
@@ -12,9 +13,9 @@ await $`rm test-file.json`
 
 section('YAML parsing')
 await write.yaml('test-file.yaml', { test: 1 })
-const { data, save } = await io.yaml`test-file.yaml`
-data.test = 2
-save()
+const yaml = await io.yaml`test-file.yaml`
+yaml.data.test = 2
+yaml.write()
 console.log(await read.yaml('test-file.yaml'))
 await $`rm test-file.yaml`
 

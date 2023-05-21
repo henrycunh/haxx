@@ -2,6 +2,6 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
     test: {
-        exclude: ['**/*.mjs'],
+        exclude: ['**/*.mjs', 'node_modules'],
     },
 })

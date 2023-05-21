@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 import { createRequire } from 'module'
 import path from 'path'
 import { tmpdir } from 'os'
@@ -11,7 +11,7 @@ registerGlobals()
 
 try {
     if (['--version', '-v', '-V'].includes(process.argv[2] || '')) {
-        console.log(`zx version ${createRequire(import.meta.url)('./package.json').version}`)
+        console.log(`haxx version ${createRequire(import.meta.url)('./package.json').version}`)
         process.exit(0)
     }
     const firstArg = process.argv.slice(2).find(a => !a.startsWith('--'))
@@ -113,7 +113,7 @@ async function importPath(filepath, origin = filepath) {
 function printUsage() {
     console.log(`
     Usage:
-            do [options] <script>
+            haxx [options] <script>
     Options:
             --quiet            : don't echo commands
             --shell=<path>     : custom shell binary

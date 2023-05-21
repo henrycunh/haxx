@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { $ } from '../src/index'
 
-describe('Process parsing feature', () => {
+describe('Process parsing feature', async() => {
     it('should properly parse a process', async() => {
         const process = $`echo hello world`
         expect(process.command)

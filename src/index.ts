@@ -12,10 +12,10 @@ import { template } from './template'
 export const argv = minimist(process.argv.slice(2))
 export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
-export function $(tokens, ...args) {
+export function $(tokens: TemplateStringsArray, ...args: any[]) {
     const { verbose, shell, prefix, quote } = $
 
-    const __from = (new Error('-').stack.split(/^\s*at\s/m)[2]).trim()
+    const __from = (new Error('-').stack.split('\n').shift().trim())
 
     let command = tokens[0]
     args.forEach((arg, index) => {
@@ -25,7 +25,7 @@ export function $(tokens, ...args) {
         command += parsedArgument + tokens[index + 1]
     })
 
-    let resolve, reject
+    let resolve: any, reject: any
     const promise = new ProcessPromise((...args) => [resolve, reject] = args)
 
     promise._run = () => {
@@ -50,12 +50,12 @@ export function $(tokens, ...args) {
                 promise._resolved = true
             })
         })
-        const onStdout = (data) => {
+        const onStdout = (data: string | Uint8Array) => {
             if (verbose) process.stdout.write(data)
             stdout += data
             combined += data
         }
-        const onStderr = (data) => {
+        const onStderr = (data: string | Uint8Array) => {
             if (verbose) process.stderr.write(data)
             stderr += data
             combined += data
@@ -95,7 +95,7 @@ export function cd(path: string) {
     process.chdir(path)
 }
 
-export function nothrow(promise) {
+export function nothrow(promise: { _nothrow: boolean }) {
     promise._nothrow = true
     return promise
 }
@@ -107,7 +107,7 @@ function pruneNewlines(argument: string | ProcessOutput) {
     return argument.toString()
 }
 
-function quote(arg) {
+function quote(arg: string) {
     if (/^[a-z0-9/_.-]+$/i.test(arg) || arg === '')
         return arg
 
