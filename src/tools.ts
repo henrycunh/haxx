@@ -5,7 +5,6 @@ export { default as fs } from 'fs-extra'
 export { default as YAML } from 'yaml'
 export { resguard } from 'resguard'
 
-export { $fetch } from 'ohmyfetch'
 export * as glob from 'globby'
 export { style } from 'kleur-template'
 export { io, read, write } from './io'

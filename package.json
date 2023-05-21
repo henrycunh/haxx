@@ -72,7 +72,6 @@
     "kleur-template": "^0.0.3",
     "minimist": "^1.2.8",
     "mustache": "^4.2.0",
-    "ohmyfetch": "^0.4.21",
     "ps-tree": "^1.2.0",
     "resguard": "^1.2.1",
     "which": "^2.0.2",

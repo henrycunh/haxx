@@ -6,7 +6,6 @@ Object.assign(global, core)
 
 declare global {
     const $: typeof core.$
-    const $fetch: typeof tools.$fetch
     const argv: typeof core.argv
     const cd: typeof core.cd
     const kleur: typeof tools.kleur
