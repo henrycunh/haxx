@@ -22,4 +22,5 @@ declare global {
     const write: typeof tools.write
     const template: typeof tools.template
     const style: typeof tools.style
+    const resguard: typeof tools.resguard
 }
