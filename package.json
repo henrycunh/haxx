@@ -36,6 +36,7 @@
   },
   "scripts": {
     "test": "vitest -u",
+    "prepublish": "nr build",
     "build": "unbuild"
   },
   "repository": {
@@ -51,6 +52,7 @@
   "homepage": "https://github.com/henrycunh/isw#readme",
   "devDependencies": {
     "@antfu/eslint-config": "^0.16.1",
+    "@antfu/ni": "^0.21.3",
     "@types/fs-extra": "^9.0.13",
     "@types/mustache": "^4.2.2",
     "@types/node": "^20.2.1",

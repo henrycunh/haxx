@@ -1,1 +1,1 @@
-import 'haxx/global'
+import 'haxx/globals'
