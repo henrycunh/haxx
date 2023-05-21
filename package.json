@@ -3,23 +3,23 @@
   "version": "0.6.0",
   "description": "a very opinionated runtime for scripts, it simply works",
   "packageManager": "pnpm@8.1.1",
-  "main": "dist/index.mjs",
-  "module": "dist/index.mjs",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "type": "module",
   "files": [
     "dist"
   ],
   "bin": {
-    "haxx": "./dist/haxx.mjs"
+    "haxx": "./dist/haxx.js"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.js"
     },
     "./globals": {
       "types": "./dist/globals.d.ts",
-      "import": "./dist/globals.mjs"
+      "import": "./dist/globals.js"
     }
   },
   "types": "./dist/index.d.ts",
@@ -37,7 +37,7 @@
   "scripts": {
     "test": "vitest -u",
     "prepublish": "nr build",
-    "build": "tsc"
+    "build": "rimraf dist && tsc"
   },
   "repository": {
     "type": "git",
@@ -54,6 +54,7 @@
     "@antfu/eslint-config": "^0.16.1",
     "@antfu/ni": "^0.21.3",
     "@types/fs-extra": "^9.0.13",
+    "@types/minimist": "^1.2.2",
     "@types/mustache": "^4.2.2",
     "@types/node": "^20.2.1",
     "@types/ps-tree": "^1.1.2",
@@ -61,12 +62,14 @@
     "conventional-changelog-cli": "^2.2.2",
     "eslint": "^8.41.0",
     "esmo": "^0.14.1",
+    "rimraf": "^5.0.1",
     "typescript": "^4.9.5",
     "unbuild": "^0.6.9",
     "vitest": "^0.31.1"
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "chalk": "^5.2.0",
     "fs-extra": "^10.1.0",
     "globby": "^13.1.4",
     "haxx": "^0.0.4",

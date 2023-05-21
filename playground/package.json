@@ -5,7 +5,10 @@
   "devDependencies": {
     "@antfu/ni": "^0.21.3",
     "bun-types": "^0.5.0",
-    "haxx": "0.5.3"
+    "haxx": "^0.6.0"
+  },
+  "scripts": {
+    "start": "haxx scripts/index.ts"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

@@ -5,7 +5,7 @@ import { spawn } from 'node:child_process'
 import { AsyncLocalStorage, createHook } from 'node:async_hooks'
 import type { Readable, Writable } from 'node:stream'
 import { inspect } from 'node:util'
-import type { Chalk } from 'chalk'
+import type { ChalkInstance } from 'chalk'
 import chalk from 'chalk'
 import which from 'which'
 import type { Duration } from './utils.js'
@@ -416,7 +416,7 @@ export class ProcessOutput extends Error {
     }
 
     [inspect.custom]() {
-        const stringify = (s: string, c: Chalk) =>
+        const stringify = (s: string, c: ChalkInstance) =>
             s.length === 0 ? '\'\'' : c(inspect(s))
         return `ProcessOutput {
   stdout: ${stringify(this.stdout, chalk.green)},
