@@ -71,7 +71,7 @@ export class ProcessPromise<T = Function> extends Promise<T> {
         const children = await psTreeAsync(this.child.pid)
         for (const p of children) {
             try {
-                process.kill(p.PID, signal)
+                process.kill(Number(p.PID), signal)
             }
             catch (e) {
             }

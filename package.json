@@ -15,7 +15,8 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
-    }
+    },
+    "./globals": "./dist/globals.mjs"
   },
   "types": "./dist/index.d.ts",
   "typesVersions": {

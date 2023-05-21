@@ -10,5 +10,6 @@ export default defineBuildConfig({
     entries: [
         './src/index',
         './src/haxx',
+        './src/globals',
     ],
 })

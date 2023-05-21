@@ -4,17 +4,25 @@ import path from 'path'
 import { tmpdir } from 'os'
 import url from 'url'
 import fs from 'fs-extra'
-import { registerGlobals } from './global'
 import { ProcessOutput } from './process-output'
+import { $ } from './index'
 
-registerGlobals()
+const { log } = console
 
-try {
-    if (['--version', '-v', '-V'].includes(process.argv[2] || '')) {
-        console.log(`haxx version ${createRequire(import.meta.url)('./package.json').version}`)
-        process.exit(0)
-    }
-    const firstArg = process.argv.slice(2).find(a => !a.startsWith('--'))
+async function cli() {
+    await import('./globals.js')
+
+    if (argv.version) return log(getVersion())
+
+    if (argv.quiet) $.verbose = false
+    if (argv.shell) $.shell = argv.shell
+    if (argv.prefix) $.prefix = argv.prefix
+
+    if (argv.help) return printUsage()
+
+    if (argv.eval) await runScript(argv.eval)
+
+    const firstArg = argv._.shift()
     if (typeof firstArg === 'undefined' || firstArg === '-') {
         const ok = await scriptFromStdin()
         if (!ok) {
@@ -22,22 +30,20 @@ try {
             process.exit(2)
         }
     }
-    else if (firstArg.startsWith('http://') || firstArg.startsWith('https://')) {
+
+    else if (/^https:?:/.test(firstArg)) {
         await scriptFromHttp(firstArg)
     }
-    else {
-        let filepath
-        if (firstArg.startsWith('/'))
-            filepath = firstArg
 
-        else if (firstArg.startsWith('file:///'))
-            filepath = url.fileURLToPath(firstArg)
+    const filepath = firstArg.startsWith('file:///')
+        ? url.fileURLToPath(firstArg)
+        : path.resolve(firstArg)
 
-        else
-            filepath = path.resolve(firstArg)
+    await importPath(filepath)
+}
 
-        await importPath(filepath)
-    }
+try {
+    await cli()
 }
 catch (p) {
     if (p instanceof ProcessOutput) {
@@ -47,6 +53,11 @@ catch (p) {
     else {
         throw p
     }
+}
+
+async function runScript(script: string) {
+    const filepath = path.join(process.cwd(), `zx-${randomId()}.mjs`)
+    await writeAndImport(script, filepath)
 }
 
 async function scriptFromStdin() {
@@ -69,7 +80,7 @@ async function scriptFromStdin() {
     return false
 }
 
-async function scriptFromHttp(remote) {
+async function scriptFromHttp(remote: string) {
     const res = await fetch(remote)
     if (!res.ok) {
         console.error(`Error: Can't get ${remote}`)
@@ -119,4 +130,12 @@ function printUsage() {
             --shell=<path>     : custom shell binary
             --prefix=<command> : prefix all commands
 `)
+}
+
+function getVersion(): string {
+    return createRequire(import.meta.url)('../package.json').version
+}
+
+function randomId() {
+    return Math.random().toString(36).slice(2)
 }
