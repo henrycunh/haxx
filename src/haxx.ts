@@ -115,6 +115,15 @@ async function importPath(filepath: string, origin = filepath) {
             origin,
         )
     }
+
+    if (ext === '.ts') {
+        const tmpFilename = `${path.basename(filepath)}-${Math.random().toString(36).slice(2)}.mjs`
+        const tmpFilepath = path.join(path.dirname(filepath), tmpFilename)
+        await $`tsc --outFile ${tmpFilepath} ${filepath}`
+        // await importPath(tmpFilepath, origin)
+        return
+    }
+
     const __filename = path.resolve(origin)
     const __dirname = path.dirname(__filename)
     const require = createRequire(origin)

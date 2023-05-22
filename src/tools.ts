@@ -6,7 +6,7 @@ export { default as kleur } from 'kleur'
 export { default as fs } from 'fs-extra'
 export { default as YAML } from 'yaml'
 export { resguard } from 'resguard'
-
+export { default as exitHook } from 'async-exit-hook'
 export * as glob from 'globby'
 export { style } from 'kleur-template'
 export { template } from './template.js'

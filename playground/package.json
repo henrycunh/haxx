@@ -5,7 +5,7 @@
   "devDependencies": {
     "@antfu/ni": "^0.21.3",
     "bun-types": "^0.5.0",
-    "haxx": "^0.6.0"
+    "haxx": "0.6.1"
   },
   "scripts": {
     "start": "haxx scripts/index.ts"

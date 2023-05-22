@@ -18,4 +18,5 @@ declare global {
     const template: typeof _.template
     const style: typeof _.style
     const resguard: typeof _.resguard
+    const exitHook: typeof _.exitHook
 }
